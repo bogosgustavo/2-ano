@@ -1,1 +1,1 @@
-# JavaPOO
+# Exercícios e trabalhos resolvidos do 2° ano de Eng. de Computação 
