@@ -26,7 +26,7 @@ public class Data{
       else System.out.println("mes invalido");
    }
    public void setAno(int ano){
-      if (ano>=2026)
+      if (ano>=0)
          this.ano = ano;
       else System.out.println("ano invalido");
    }

@@ -1,7 +1,7 @@
 public class Funcionario extends Pessoa {
    private int registro;
    private double salario;
-   public Funcionario (String nome, Data nascimento, int registro, double salario, String telefone){
+   public Funcionario (String nome, String telefone, Data nascimento, int registro, double salario){
       super(nome,nascimento,telefone);
       this.registro=registro;
       this.salario=salario;
@@ -22,7 +22,7 @@ public class Funcionario extends Pessoa {
    public void setRegistro(int registro){
      this.registro=registro; 
    }
-   public double getSalario(){
+   public final double getSalario(){
       return this.salario;
    }
    public void setSalario(double salario){
@@ -30,5 +30,10 @@ public class Funcionario extends Pessoa {
           this.salario=salario; 
       }
    }
-
+   public double bonificar(){
+      return getSalario()*0.1;
+   }
+   public double getSalarioComBonificacao(){
+      return getSalario()+bonificar();
+   }
 }

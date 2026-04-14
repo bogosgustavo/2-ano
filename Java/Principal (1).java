@@ -9,17 +9,20 @@ public class Principal{
       data[3]=new Data(23, 6, 2005);
       data[4]=new Data(2, 7, 2006);
       data[5]=new Data(8, 8, 2004);
+      //
       
      Aluno aluno[]=new Aluno[3];
-     aluno[0]=new Aluno("Gustavo",data[0],  6967911, "40028922");
-     aluno[1]=new Aluno("Perin", data[1], 2001);
-     aluno[2]=new Aluno("Thierre", data[2], 6769);
+     aluno[0]=new Aluno("Gustavo",data[0],  6967911,"6", "40028922");
+     aluno[1]=new Aluno("Perin", data[1], 2001, "5");
+     aluno[2]=new Aluno("Thierre", data[2], 6769,"42");
      
      Funcionario funcionario[]=new Funcionario[3];
      funcionario[0]=new Funcionario("Fabio", data[3], 23, 7500.00,"91011-1213");
      funcionario[1]=new Funcionario("Joao Pedro", data[4], 12, 5000.00,"1234-5678");
      funcionario[2]=new Funcionario("Danilo", data[5], 1914, 10000.00);
      
+     Chefe chefe[]=new Chefe[3];
+
      System.out.println("Alunos: ");
      System.out.println(aluno[0].getNome());
      System.out.println(aluno[0].getNascimento());
