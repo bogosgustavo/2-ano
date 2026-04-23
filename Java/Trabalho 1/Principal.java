@@ -25,15 +25,15 @@ public class Principal {
 
       // Alunos
       Aluno aluno[] = new Aluno[3];
-      aluno[0] = new Aluno("Gustavo", data[0], 6967911, 6, "40028922");
-      aluno[1] = new Aluno("Pedro", data[1], 2001, 5);
-      aluno[2] = new Aluno("Thierre", data[2], 6769, 42);
+      aluno[0] = new Aluno("Gustavo", data[0], 28, 6, "40028922");
+      aluno[1] = new Aluno("Pedro", data[1], 20, 5);
+      aluno[2] = new Aluno("Thierre", data[2], 67, 42);
 
       // Funcionarios
       Funcionario funcionario[] = new Funcionario[3];
       funcionario[0] = new Funcionario("Fabio", "91011-1213", data[3], 23, 7500.00);
       funcionario[1] = new Funcionario("Joao", "1234-5678", data[4], 12, 5000.00);
-      funcionario[2] = new Funcionario("Danilo", data[5], 1914, 10000.00);
+      funcionario[2] = new Funcionario("Danilo", data[5], 17, 10000.00);
 
       // Chefes
       Chefe chefe[] = new Chefe[3];
