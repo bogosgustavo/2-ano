@@ -28,8 +28,11 @@ public class Pessoa{
    }
    @Override
    public String toString(){
-      return "Nome: " + nome +
-          "\nTelefone: " + telefone +
-          "\nNascimento: " + nascimento;
+         String s =  "Nome: " + nome +
+                    "\nNascimento: " + nascimento;
+         if(telefone!=null){
+            s+="\nTelefone: " + telefone;
+         }
+         return s;
 }
 }

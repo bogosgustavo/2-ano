@@ -2,7 +2,7 @@ public class Chefe extends Funcionario {
    private String cargo;
 
    public Chefe(String nome, String telefone, Data nascimento, int registro, double salario, String cargo) {
-      super(nome, nascimento, registro, salario, telefone);
+      super(nome, telefone, nascimento, registro, salario);
       this.cargo = cargo;
    }
 

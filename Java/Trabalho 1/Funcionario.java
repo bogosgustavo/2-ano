@@ -14,7 +14,7 @@ public class Funcionario extends Pessoa {
    public String toString(){
       return super.toString()+
          "\nRegistro: "+this.registro+
-         "\n Salario: "+this.salario;
+         "\nSalario: "+this.salario;
    }
    public int getRegistro(){
       return this.registro;

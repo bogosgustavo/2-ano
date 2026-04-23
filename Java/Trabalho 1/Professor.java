@@ -2,7 +2,7 @@ public class Professor extends Funcionario {
    private int horasAula;
 
    public Professor(String nome, Data nascimento, int registro, double salario, String telefone, int horasAula) {
-      super(nome, nascimento, registro, salario, telefone);
+      super(nome, telefone, nascimento, registro, salario);
       this.horasAula = horasAula;
    }
 
