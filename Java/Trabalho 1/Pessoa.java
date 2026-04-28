@@ -1,6 +1,6 @@
 public class Pessoa{
    private String nome;
-   private String telefone;
+   private String telefone="";
    private Data nascimento;
    public Pessoa (String nome, Data nascimento, String telefone){
       this.nome=nome;

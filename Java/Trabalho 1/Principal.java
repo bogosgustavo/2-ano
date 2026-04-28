@@ -25,7 +25,7 @@ public class Principal {
 
       // Alunos
       Aluno aluno[] = new Aluno[3];
-      aluno[0] = new Aluno("Gustavo", data[0], 28, 6, "40028922");
+      aluno[0] = new Aluno("Gustavo", data[0], 28, 6, "4002-8922");
       aluno[1] = new Aluno("Pedro", data[1], 20, 5);
       aluno[2] = new Aluno("Thierre", data[2], 67, 42);
 
@@ -43,9 +43,9 @@ public class Principal {
 
       // Professores
       Professor professor[] = new Professor[3];
-      professor[0] = new Professor("Lucas", data[9], 401, 4500.00, "95544-3322", 18);
-      professor[1] = new Professor("Camila", data[10], 402, 5200.00, "94433-2211", 22);
-      professor[2] = new Professor("Bruno", data[11], 403, 4800.00, "93322-1100", 16);
+      professor[0] = new Professor("Bob", data[9], 401, 4500.00, "95544-3322", 18);
+      professor[1] = new Professor("Marcos", data[10], 402, 5200.00, "94433-2211", 22);
+      professor[2] = new Professor("Hermaninoff", data[11], 403, 4800.00, "93322-1100", 16);
 
       // ===================== SAÍDA =====================
 
