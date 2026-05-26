@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define NOTAS 3
+#define NOTAS 10
 
 int main(){
 char registro_academico[NOTAS][9];
@@ -37,6 +37,6 @@ for (i=0;i<NOTAS;i++){
         reprovadodireto++;
     }
 }
-printf("\nAlunos aprovados direto: %d\nAlunos reprovados direto: %d\nAlunos aprovados por exame: %d\nAlunos reprovados após exame: %d",aprovadodireto, reprovadodireto, aprovadoexame, reprovadoexame);
+printf("\nAlunos aprovados direto: %d\nAlunos reprovados direto: %d\nAlunos aprovados por exame: %d\nAlunos reprovados após exame: %d\n",aprovadodireto, reprovadodireto, aprovadoexame, reprovadoexame);
 return 0;
 }
