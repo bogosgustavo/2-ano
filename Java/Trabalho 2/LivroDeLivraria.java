@@ -2,12 +2,15 @@ public class LivroDeLivraria extends Livro {
 
     private double preco;
 
-    public LivroDeLivraria(String nome, String autor, int anoEdicao, double preco) {
-        super(nome, autor, anoEdicao);
+    public LivroDeLivraria(String nome,
+                           String autor,
+                           int ano,
+                           double preco) {
+
+        super(nome, autor, ano);
         this.preco = preco;
     }
 
-    // Getters e Setters
     public double getPreco() {
         return preco;
     }
@@ -16,16 +19,14 @@ public class LivroDeLivraria extends Livro {
         this.preco = preco;
     }
 
-    // Implementação do método abstrato informar()
     @Override
     public void informar() {
-        System.out.println("Este livro é de LIVRARIA.");
+        System.out.println("Livro de livraria");
     }
 
     @Override
     public String toString() {
-        return super.toString()
-            + "\nTipo: Livro de Livraria"
-            + String.format("\nPreço: R$ %.2f", preco);
+        return super.toString() +
+               "\nPreço: R$ " + preco;
     }
 }

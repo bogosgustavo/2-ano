@@ -1,92 +1,96 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public abstract class Livro {
 
-	// Scanner estático e compartilhado para evitar conflito ao ler System.in múltiplas vezes
-	protected static final Scanner scanner = new Scanner(System.in);
+    private String nome;
+    private String autor;
+    private int ano;
+    private int nota;
 
-	private String nome;
-	private String autor;
-	private int anoEdicao;
-	private int avaliacao;
+    public Livro(String nome, String autor, int ano) {
+        this.nome = nome;
+        this.autor = autor;
+        this.ano = ano;
+        this.nota = nota;
+    }
 
-	public Livro(String nome, String autor, int anoEdicao) {
-		this.nome = nome;
-		this.autor = autor;
-		this.anoEdicao = anoEdicao;
-		this.avaliacao = 0;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-	// Getters e Setters
-	public String getNome() {
-		return nome;
-	}
+    public String getAutor() {
+        return this.autor;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public int getAno() {
+        return this.ano;
+    }
 
-	public String getAutor() {
-		return autor;
-	}
+    public int getNota() {
+        return this.nota;
+    }
 
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public int getAnoEdicao() {
-		return anoEdicao;
-	}
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 
-	public void setAnoEdicao(int anoEdicao) {
-		this.anoEdicao = anoEdicao;
-	}
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 
-	public int getAvaliacao() {
-		return avaliacao;
-	}
+    public void setNota(int nota) {
+        this.nota = nota;
+        
+    }
 
-	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
-	}
+public void avaliar() {
 
-	/**
-	 * Permite ao usuário digitar a avaliação do livro (nota de 0 a 10).
-	 * Lança MinhaExcecao se a nota for menor que 0 ou maior que 10.
-	 */
-	public void avaliar() throws MinhaExcecao {
-		try {
-			System.out.print("Digite a avaliação para o livro \"" + nome + "\" (0 a 10): ");
-			int nota = scanner.nextInt();
+    while (true) {
 
-			if (nota < 0 || nota > 10) {
-				throw new MinhaExcecao(
-				    "Avaliação inválida: " + nota + ". A nota deve ser um número inteiro entre 0 e 10."
-				);
-			}
+        try {
 
-			this.avaliacao = nota;
-			System.out.println("Avaliação registrada com sucesso: " + nota);
+            int notaDigitada = Integer.parseInt(
+                JOptionPane.showInputDialog(
+                    null,
+                    "Digite uma nota de 0 a 10 para:\n" + nome
+                )
+            );
 
-		} catch (InputMismatchException e) {
-			scanner.nextLine(); // limpa a entrada inválida
-			throw new MinhaExcecao(
-			    "Entrada inválida. Digite apenas números inteiros entre 0 e 10."
-			);
-		}
-	}
+            if (notaDigitada < 0 || notaDigitada > 10) {
+                throw new MinhaExcecao(
+                    "A nota deve estar entre 0 e 10."
+                );
+            }
 
-	/**
-	 * Método abstrato: informa se o livro é de biblioteca ou de livraria.
-	 */
-	public abstract void informar();
+            this.nota = notaDigitada;
+            break;
 
-	@Override
-	public String toString() {
-		return "Nome: " + nome
-		       + "\nAutor: " + autor
-		       + "\nAno da Edição: " + anoEdicao
-		       + "\nAvaliação: " + avaliacao + "/10";
-	}
+        } catch (MinhaExcecao e) {
+
+            JOptionPane.showMessageDialog(
+                null,
+                e.getMessage()
+            );
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(
+                null,
+                "Digite apenas números."
+            );
+        }
+    }
+}
+    public String toString() {
+        return "Nome: " + nome +
+               "\nAutor: " + autor +
+               "\nAno: " + ano +
+               "\nNota: " + nota;
+    }
+
+    public abstract void informar();
 }

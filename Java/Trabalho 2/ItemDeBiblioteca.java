@@ -1,8 +1,6 @@
-public interface ItemDeBiblioteca {
-
-    void emprestarItem() throws MinhaExcecao;
-
-    void devolverItem() throws MinhaExcecao;
-
-    boolean estaEmprestado();
+public interface ItemDeBiblioteca{
+   void EmprestarItem();
+   void DevolverItem();      
+   boolean verificarEmprestimo();
+  
 }
