@@ -1,0 +1,7 @@
+batata 2 3 4 5 6 7 8
+alface 20 30 40 50 60 70 80
+repolho 8 7 6 5 4 3 2
+tomate 80 70 60 50 40 30 20
+couve 25 50 75 110 10 20 30
+banana 10 10 10 10 10 10 10 
+lasanha 15 0 0 0 0 30 0
