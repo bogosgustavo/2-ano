@@ -1,94 +1,73 @@
 # 🎓 2º Ano — Engenharia de Computação
 
-Exercícios, listas e trabalhos resolvidos durante o 2º ano do curso de Engenharia de Computação, organizados por disciplina.
+Exercícios, listas e trabalhos feitos durante o 2º ano de Engenharia de Computação, separados por disciplina.
 
-![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Assembly](https://img.shields.io/badge/Assembly-6E4C13?style=for-the-badge)
-![VHDL](https://img.shields.io/badge/VHDL-543978?style=for-the-badge)
-![License](https://img.shields.io/badge/licença-GPL--2.0-blue?style=for-the-badge)
+[C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black) [Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) [Assembly](https://img.shields.io/badge/Assembly-6E4C13?style=for-the-badge) [VHDL](https://img.shields.io/badge/VHDL-543978?style=for-the-badge) [License](https://img.shields.io/badge/licen%C3%A7a-GPL--2.0-blue?style=for-the-badge)
 
 ---
 
 ## 📚 Disciplinas
 
-| Pasta | Disciplina | Linguagem | O que tem aqui |
-|---|---|---|---|
-| [`algoritmos/`](algoritmos) | Algoritmos | C | Listas de exercícios, manipulação de arquivos e avaliações |
-| [`estrutura-de-dados-1/`](estrutura-de-dados-1) | Estrutura de Dados I | — | Em breve |
-| [`poo-java/`](poo-java) | Programação Orientada a Objetos | Java | Aulas, exercícios e trabalhos |
-| [`oac-1/`](oac-1) | Organização e Arquitetura de Computadores I | Assembly | Exercícios e trabalhos |
-| [`oac-2/`](oac-2) | Organização e Arquitetura de Computadores II | VHDL | Projeto de processador MIPS |
-
----
-
-## 🗂️ Estrutura do repositório
-
-```
-2-ano/
-├── algoritmos/
-│   ├── listas/              Listas de exercícios (condicionais, repetição, vetores, matrizes, registros)
-│   ├── arquivos/            Manipulação de arquivos, organizada por data da aula
-│   │   ├── 02-06/
-│   │   └── 09-06/
-│   └── avaliacao-ed/        Avaliação (A1 a A6)
-├── estrutura-de-dados-1/
-├── poo-java/
-│   ├── aulas/               Códigos feitos em aula (25-05 e 28-05)
-│   ├── exercicios/
-│   └── trabalhos/           Trabalho 1 (herança) e Trabalho 2 (biblioteca/livraria)
-├── oac-1/
-│   ├── exercicios/          exer-22, 42, 43, 44 e 45
-│   └── trabalhos/           Trabalho 1 e Trabalho 2 (partes 1 e 2)
-└── oac-2/
-    └── trabalho-2/          Processador MIPS em VHDL (projeto do ModelSim)
-```
+| Pasta | Disciplina | Linguagem | Conteúdo |
+| --- | --- | --- | --- |
+| [`algoritmos/`](algoritmos/) | Algoritmos | C | Listas de exercícios, arquivos e avaliações |
+| [`estrutura-de-dados-1/`](estrutura-de-dados-1/) | Estrutura de Dados I | — | Em breve |
+| [`poo-java/`](poo-java/) | Programação Orientada a Objetos | Java | Aulas, exercícios e trabalhos |
+| [`oac-1/`](oac-1/) | Organização e Arquitetura de Computadores I | Assembly | Exercícios e trabalhos |
+| [`oac-2/`](oac-2/) | Organização e Arquitetura de Computadores II | VHDL | Projeto de um processador MIPS |
 
 ---
 
 ## 🔎 Destaques
 
-- **Algoritmos (C)** — da base (operadores, condicionais, laços `for`, `while` e `do while`) até vetores, matrizes, registros e leitura/escrita de arquivos de texto.
-- **POO (Java)** — herança e polimorfismo (`Pessoa`, `Aluno`, `Professor`, `Funcionario`, `Chefe`), tratamento de exceções com exceção personalizada e um sistema de itens de biblioteca e livraria.
-- **OAC I (Assembly)** — programas de baixo nível trabalhando direto com registradores.
-- **OAC II (VHDL)** — componentes de um processador MIPS: ULA, controle da ULA, unidade de controle, banco de registradores, extensor de sinal e multiplexadores.
+- **Algoritmos (C)** — exercícios envolvendo operadores, condicionais, laços, vetores, matrizes, registros e arquivos.
+- **POO (Java)** — exercícios e trabalhos envolvendo herança, polimorfismo, exceções e sistemas simples.
+- **OAC I (Assembly)** — programas em Assembly utilizando registradores e instruções de baixo nível.
+- **OAC II (VHDL)** — desenvolvimento de partes de um processador MIPS, como ULA, controle, banco de registradores e multiplexadores.
 
 ---
 
 ## ▶️ Como executar
 
-### C (`algoritmos/`)
+### C
 
-Precisa do [GCC](https://gcc.gnu.org/). Dentro da pasta do arquivo:
+É necessário ter o [GCC](https://gcc.gnu.org/) instalado.
+
+Dentro da pasta do arquivo:
 
 ```bash
 gcc "Lista Condicionais.c" -o programa
-./programa          # no Windows: programa.exe
+./programa
 ```
 
-### Java (`poo-java/`)
+No Windows, o executável será `programa.exe`.
 
-Precisa do [JDK](https://adoptium.net/). Dentro da pasta do trabalho ou da aula:
+### Java
+
+É necessário ter um [JDK](https://adoptium.net/) instalado.
+
+Dentro da pasta do trabalho ou da aula:
 
 ```bash
 javac *.java
 java Principal
 ```
 
-### Assembly (`oac-1/`)
+### Assembly
 
-Abra os arquivos `.asm` em um simulador MIPS, como o [MARS](https://dpetersanderson.github.io/) ou o QtSpim, e execute por lá.
+Os arquivos `.asm` podem ser abertos em um simulador MIPS, como o [MARS](https://dpetersanderson.github.io/) ou o QtSpim.
 
-### VHDL (`oac-2/`)
+### VHDL
 
-Abra o arquivo `oac-2/trabalho-2/trabalho 2.1.mpf` no **ModelSim** e compile os arquivos de `mips/mips/`. Os arquivos gerados na simulação (`work/`, `transcript`, `vsim.wlf`) não ficam no repositório, pois são recriados ao compilar.
+Os arquivos do projeto podem ser abertos no **ModelSim** para compilação e simulação.
 
 ---
 
 ## 📝 Observações
 
-- Os arquivos compilados (executáveis, `.class`) não são versionados. Compile localmente seguindo as instruções acima.
-- Este repositório é de estudo: o código reflete o aprendizado da época e pode não seguir as melhores práticas.
+Este é um repositório de estudo. Os códigos aqui foram feitos durante as disciplinas e representam o que eu estava aprendendo naquele momento, então alguns deles podem não seguir as melhores práticas.
+
+Arquivos gerados pela compilação ou pelos simuladores não são versionados.
 
 ---
 
@@ -98,4 +77,6 @@ Distribuído sob a licença **GPL-2.0**. Veja o arquivo [`LICENSE`](LICENSE) par
 
 ---
 
-<p align="center">Feito por <a href="https://github.com/bogosgustavo">Gustavo Bogos</a></p>
+<p align="center">
+  Feito por <a href="https://github.com/bogosgustavo">Gustavo Bogos</a>
+</p>
