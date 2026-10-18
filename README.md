@@ -65,7 +65,7 @@ Os arquivos do projeto podem ser abertos no **ModelSim** para compilação e sim
 
 ## 📝 Observações
 
-Este é um repositório de estudo. Os códigos aqui foram feitos durante as disciplinas e representam o que eu estava aprendendo naquele momento, então alguns deles podem não seguir as melhores práticas.
+Este é um repositório de estudo de programação e Git. Os códigos aqui foram feitos durante as disciplinas e representam o que eu estava aprendendo naquele momento, então alguns deles podem não seguir as melhores práticas.
 
 Arquivos gerados pela compilação ou pelos simuladores não são versionados.
 
