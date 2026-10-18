@@ -2,19 +2,19 @@
 
 Exercícios, listas e trabalhos feitos durante o 2º ano de Engenharia de Computação, separados por disciplina.
 
-[C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black) [Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) [Assembly](https://img.shields.io/badge/Assembly-6E4C13?style=for-the-badge) [VHDL](https://img.shields.io/badge/VHDL-543978?style=for-the-badge) [License](https://img.shields.io/badge/licen%C3%A7a-GPL--2.0-blue?style=for-the-badge)
+![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black) ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white) ![Assembly](https://img.shields.io/badge/Assembly-6E4C13?style=for-the-badge) ![VHDL](https://img.shields.io/badge/VHDL-543978?style=for-the-badge) ![License](https://img.shields.io/badge/licen%C3%A7a-GPL--2.0-blue?style=for-the-badge)
 
 ---
 
 ## 📚 Disciplinas
 
 | Pasta | Disciplina | Linguagem | Conteúdo |
-| --- | --- | --- | --- |
-| [`algoritmos/`](algoritmos/) | Algoritmos | C | Listas de exercícios, arquivos e avaliações |
-| [`estrutura-de-dados-1/`](estrutura-de-dados-1/) | Estrutura de Dados I | — | Em breve |
-| [`poo-java/`](poo-java/) | Programação Orientada a Objetos | Java | Aulas, exercícios e trabalhos |
-| [`oac-1/`](oac-1/) | Organização e Arquitetura de Computadores I | Assembly | Exercícios e trabalhos |
-| [`oac-2/`](oac-2/) | Organização e Arquitetura de Computadores II | VHDL | Projeto de um processador MIPS |
+| ---------------------------------------------------------------------- | -------------------------------------------- | --------- | ------------------------------------------- |
+| [`algoritmos/`](https://chatgpt.com/c/algoritmos/) | Algoritmos | C | Listas de exercícios, arquivos e avaliações |
+| [`estrutura-de-dados-1/`](https://chatgpt.com/c/estrutura-de-dados-1/) | Estrutura de Dados I | — | Em breve |
+| [`poo-java/`](https://chatgpt.com/c/poo-java/) | Programação Orientada a Objetos | Java | Aulas, exercícios e trabalhos |
+| [`oac-1/`](https://chatgpt.com/c/oac-1/) | Organização e Arquitetura de Computadores I | Assembly | Exercícios e trabalhos |
+| [`oac-2/`](https://chatgpt.com/c/oac-2/) | Organização e Arquitetura de Computadores II | VHDL | Projeto de um processador MIPS |
 
 ---
 
