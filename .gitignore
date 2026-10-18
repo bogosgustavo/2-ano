@@ -4,3 +4,15 @@
 *.un
 *.exe
 
+
+# Executaveis compilados (sem extensao)
+Manipulacao de Arquivos
+LeituraNumeros
+
+# Arquivos gerados / backups
+*.zip
+*.bak
+work/
+transcript
+vsim.wlf
+*.cr.mti
