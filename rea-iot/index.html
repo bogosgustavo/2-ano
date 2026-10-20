@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="https://i.imgur.com/huEJ0TT.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet das Coisas (IOT)</title>
+  <meta name="description" content="Recurso Educacional Aberto sobre Internet das Coisas, aplicações cotidianas, diferenças entre automação e IOT e integração de dispositivos conectados.">
+  <meta name="author" content="Gustavo Bogos dos Santos">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --secondary: #0f172a;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #1e293b;
+    }
+    body.dark-theme {
+      --primary: #38bdf8;
+      --primary-dark: #0ea5e9;
+      --secondary: #f1f5f9;
+      --accent: #34d399;
+      --bg: #0b1120;
+      --surface: #111c2e;
+      --text: #dbe4f0;
+      --text-muted: #a6b4c8;
+      --border: #29384d;
+      --code-bg: #020617;
+    }
+    body.dark-theme .badge-rea { background: #12334a; color: #7dd3fc; }
+    body.dark-theme .tag { background: #123b31; color: #86efac; }
+    body.dark-theme .note { background: #13283d; }
+    body.dark-theme .flow-item { background: var(--surface); }
+    body.dark-theme th { background: #17334a; color: #e2e8f0; }
+    body.dark-theme footer { background: #020617; }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .theme-toggle { 
+      position: relative;
+      overflow: hidden;
+      background: var(--surface); 
+      color: var(--text); 
+      border: 1px solid var(--border); 
+      border-radius: 999px; 
+      padding: .55rem .95rem; 
+      font-size: .88rem; 
+      font-weight: 700; 
+      cursor: pointer; 
+      margin-top: 0; 
+      white-space: nowrap; 
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      min-width: 185px;
+      text-align: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      transition: border-color 0.85s ease-in-out, background-color 0.85s ease-in-out, color 0.85s ease-in-out, transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 1;
+    }
+    .theme-toggle:hover { 
+      border-color: var(--primary); 
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+    .theme-toggle:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .theme-toggle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      background: var(--primary);
+      opacity: 0.28;
+      transition: width 1s linear;
+      z-index: -1;
+    }
+    .theme-toggle.holding::before {
+      width: 100%;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    
+    body { 
+      background-color: var(--bg); 
+      color: var(--text); 
+      line-height: 1.65; 
+      transition: background-color 0.85s ease-in-out, color 0.85s ease-in-out;
+    }
+    header, 
+    .card, 
+    .case-box, 
+    .ficha-tecnica, 
+    table, 
+    th, 
+    td, 
+    footer, 
+    .note, 
+    .flow-item, 
+    .quiz, 
+    .tag, 
+    .badge-rea,
+    .references li {
+      transition: background-color 0.85s ease-in-out, border-color 0.85s ease-in-out, color 0.85s ease-in-out, box-shadow 0.85s ease-in-out;
+    }
+
+    header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    
+    .nav-container { 
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 0.9rem 1.5rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 1rem; 
+    }
+    .logo { font-weight: 800; font-size: 1.25rem; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: .5rem; white-space: nowrap; flex-shrink: 0; }
+    .site-logo-icon { width: 32px; height: 32px; object-fit: contain; border-radius: 50%; flex-shrink: 0; }
+    .badge-rea { background-color: #e0f2fe; color: var(--primary); font-size: .75rem; padding: .2rem .5rem; border-radius: 9999px; font-weight: 700; }
+    
+    nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: nowrap; align-items: center; }
+    nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: .92rem; white-space: nowrap; transition: color 0.25s ease; }
+    nav a:hover { color: var(--primary); }
+
+    .hero {
+      position: relative;
+      background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.70) 0%, rgba(30, 41, 59, 0.75) 100%),
+        url('iot-fundo.png') center/cover no-repeat;
+      color: white;
+      padding: 6.5rem 1.5rem;
+      text-align: center;
+      transition: background 0.85s ease-in-out;
+    }
+    body.dark-theme .hero {
+      background: 
+        linear-gradient(135deg, rgba(11, 17, 32, 0.75) 0%, rgba(15, 23, 42, 0.80) 100%),
+        url('iot-fundo.png') center/cover no-repeat;
+    }
+    .hero h1 { 
+      font-size: 2.8rem; 
+      max-width: 850px; 
+      margin: 0 auto 1.25rem; 
+      line-height: 1.2; 
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); 
+    }
+    .hero p { 
+      font-size: 1.15rem; 
+      color: #cbd5e1; 
+      max-width: 720px; 
+      margin: 0 auto 2.2rem; 
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); 
+    }
+
+    .btn { 
+      display: inline-flex; 
+      align-items: center;
+      justify-content: center;
+      padding: .85rem 1.75rem; 
+      border-radius: 8px; 
+      font-weight: 700; 
+      text-decoration: none; 
+      margin: .35rem; 
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 18px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    }
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary { 
+      background-color: var(--primary); 
+      color: white; 
+      border: 1px solid transparent;
+    }
+    .btn-primary:hover { 
+      background-color: var(--primary-dark); 
+    }
+
+    .btn-outline { 
+      border: 1.5px solid #cbd5e1; 
+      color: #f8fafc; 
+      background: rgba(15, 23, 42, 0.55); 
+      backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover { 
+      background-color: rgba(255, 255, 255, 0.2); 
+      border-color: #ffffff;
+    }
+
+    main { max-width: 1100px; margin: auto; padding: 3rem 1.5rem; }
+    
+    section.content-section { 
+      margin-bottom: 4rem; 
+      scroll-margin-top: 90px; 
+    }
+
+    h2.section-title { font-size: 1.8rem; color: var(--secondary); margin-bottom: 1.5rem; position: relative; padding-bottom: .5rem; }
+    h2.section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 50px; height: 4px; background: var(--primary); border-radius: 2px; }
+    h3 { color: var(--secondary); margin-bottom: .5rem; }
+    p + p { margin-top: .8rem; }
+    
+    .ficha-tecnica { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .ficha-item strong { display: block; color: var(--secondary); font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; }
+    .ficha-item span { font-size: .95rem; color: var(--text); }
+    
+    .modulos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+    .card .step { font-size: .8rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: .5rem; }
+    .card h3 { font-size: 1.2rem; }
+    .tag { display: inline-block; margin: .5rem 0; padding: .2rem .55rem; background: #dcfce7; color: #166534; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+    .note { background: #eff6ff; border-left: 4px solid var(--primary); padding: 1rem 1.25rem; border-radius: 6px; margin-top: 1rem; }
+    .case-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; }
+    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; align-items: stretch; }
+    .flow-item { border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; background: #fff; }
+    .flow-item strong { display: block; color: var(--secondary); margin-bottom: .4rem; }
+    .symbol { font-size: 1.8rem; display: block; margin-bottom: .4rem; }
+    table { width: 100%; border-collapse: collapse; background: var(--surface); margin-top: 1rem; border-radius: 8px; overflow: hidden; }
+    th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: #e0f2fe; color: var(--secondary); }
+    tr:last-child td { border-bottom: 0; }
+    
+    .quiz { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-top: 1rem; }
+    .question { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .question:last-of-type { border-bottom: 0; }
+    .question p { font-weight: 700; color: var(--secondary); margin-bottom: .5rem; }
+    .question label { display: block; margin: .4rem 0; cursor: pointer; }
+    
+    button[type="submit"] { 
+      background: var(--primary); 
+      color: white; 
+      border: 0; 
+      border-radius: 8px; 
+      padding: .85rem 1.6rem; 
+      font-size: 1rem; 
+      font-weight: 700; 
+      cursor: pointer; 
+      margin-top: 1.2rem; 
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    button[type="submit"]:hover { 
+      background: var(--primary-dark); 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.25);
+    }
+    button[type="submit"]:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    #quiz-result { margin-top: 1rem; font-weight: 700; }
+    
+    .feedback {
+      margin-top: 0.6rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .feedback.correct {
+      background-color: #dcfce7;
+      color: #14532d;
+      border: 1px solid #86efac;
+    }
+    .feedback.incorrect {
+      background-color: #fee2e2;
+      color: #7f1d1d;
+      border: 1px solid #fca5a5;
+    }
+    body.dark-theme .feedback.correct {
+      background-color: #064e3b;
+      color: #a7f3d0;
+      border-color: #059669;
+    }
+    body.dark-theme .feedback.incorrect {
+      background-color: #7f1d1d;
+      color: #fecaca;
+      border-color: #dc2626;
+    }
+
+    .references {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .references li {
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+    }
+    .references li:hover {
+      border-color: var(--primary);
+      transform: translateX(5px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+    .references a {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+    .references a::after {
+      content: "↗";
+      font-size: 0.85em;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .references a:hover {
+      color: var(--primary-dark);
+      text-decoration-color: var(--primary-dark);
+    }
+    .references a:hover::after {
+      transform: translate(2px, -2px);
+    }
+    body.dark-theme .references a:hover {
+      color: #bae6fd;
+    }
+
+    a { overflow-wrap: anywhere; }
+    footer { background: var(--secondary); color: #cbd5e1; padding: 3rem 1.5rem; font-size: .9rem; }
+    .footer-container { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .footer-container h3 { color: white; font-size: 1.05rem; }
+    .footer-container a { color: #38bdf8; }
+    
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-container { align-items: flex-start; flex-direction: column; gap: 0.8rem; }
+      nav ul { flex-wrap: wrap; gap: .6rem 1rem; }
+      .flow { grid-template-columns: 1fr; }
+      table { font-size: .9rem; }
+      th, td { padding: .7rem; }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <header>
+    <div class="nav-container">
+      <a href="#inicio" class="logo"><img src="https://i.imgur.com/huEJ0TT.png" alt="Ícone IoT" class="site-logo-icon"> Internet of Things (IOT) <span class="badge-rea">REA</span></a>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="true" title="Mantenha pressionado por 1s para alternar">Segure para modo claro</button>
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="#conceito">O que é IoT?</a></li>
+          <li><a href="#funcionamento">Como funciona</a></li>
+          <li><a href="#exemplos">Exemplos</a></li>
+          <li><a href="#domotica">Domótica</a></li>
+          <li><a href="#estudo-caso">Estudo de caso</a></li>
+          <li><a href="#atividade">Questionário</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Internet das Coisas (IOT)</h1>
+    <p>Entenda como objetos físicos se conectam à internet, trocam informações e podem ser monitorados e/ou controlados por aplicativos — com exemplos de casa inteligente, segurança e energia solar.</p>
+    <div>
+      <a href="#conceito" class="btn btn-primary">Aprender sobre</a>
+      <a href="#exemplos" class="btn btn-outline">Ver exemplos</a>
+    </div>
+  </section>
+
+  <main>
+    <section class="content-section" id="sobre">
+      <h2 class="section-title">Sobre este recurso educacional</h2>
+      <div class="ficha-tecnica">
+        <div class="ficha-item"><strong>Tema</strong><span>Internet das Coisas (IoT)</span></div>
+        <div class="ficha-item"><strong>Público-alvo</strong><span>Estudantes e pessoas interessadas em tecnologia</span></div>
+        <div class="ficha-item"><strong>Objetivo</strong><span>Compreender o conceito, o funcionamento e as aplicações no dia-a-dia</span></div>
+        <div class="ficha-item"><strong>Formato</strong><span>Material explicativo com exemplos e estudo de caso</span></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="conceito">
+      <h2 class="section-title">1. O que é Internet das Coisas?</h2>
+      <p>A <strong>Internet das Coisas</strong>, ou <strong>IoT</strong> (do inglês <em>Internet of Things</em>), é o conceito de conectar objetos físicos a redes e sistemas digitais para coletar, transmitir e utilizar dados. Esses objetos podem ser eletrodomésticos, sensores, câmeras, veículos, máquinas industriais e sistemas de geração de energia.</p>
+      <p>Com a IoT, um dispositivo pode enviar informações para um aplicativo, receber comandos ou permitir que seu funcionamento seja acompanhado à distância. Alguns sistemas também usam os dados para executar ações automaticamente.</p>
+    </section>
+
+    <section class="content-section" id="funcionamento">
+      <h2 class="section-title">2. Como funciona?</h2>
+      <p>Um sistema de IoT costuma combinar alguns elementos. Eles podem estar no mesmo aparelho ou distribuídos entre dispositivos, aplicativos e serviços online.</p>
+      <div class="modulos-grid">
+        <article class="card"><div class="step">Etapa 01</div><h3>Sensores e dados</h3><p>Sensores ou componentes do aparelho coletam informações, como temperatura, movimento, consumo ou estado de funcionamento.</p></article>
+        <article class="card"><div class="step">Etapa 02</div><h3>Processamento</h3><p>Um microcontrolador ou computador interpreta os dados e pode decidir qual resposta executar.</p></article>
+        <article class="card"><div class="step">Etapa 03</div><h3>Conectividade</h3><p>O dispositivo usa uma rede, como Wi-Fi ou rede celular, para enviar ou receber informações. A tecnologia utilizada depende do produto.</p></article>
+        <article class="card"><div class="step">Etapa 04</div><h3>Aplicativo ou ação</h3><p>Os dados podem aparecer em um aplicativo, gerar uma notificação ou resultar em um comando para o equipamento.</p></article>
+      </div>
+      <div class="note">Nem todo sistema precisa enviar tudo para a nuvem: parte do processamento pode ocorrer localmente, por exemplo, com um roteador mesh. E nem todo dispositivo IoT precisa ter controle automático.</div>
+    </section>
+
+    <section class="content-section" id="exemplos">
+      <h2 class="section-title">3. IoT em situações do cotidiano</h2>
+      <p>Os exemplos abaixo mostram diferentes formas de usar dispositivos conectados. As funções específicas dependem do modelo, da configuração e dos serviços disponíveis.</p>
+      <div class="modulos-grid">
+        <article class="card"><div class="step">Casa inteligente</div><h3>Lâmpada inteligente</h3><span class="tag">Controle e integração</span><p>Uma lâmpada compatível pode ser controlada pelo aplicativo do fabricante e integrada ao Google Home para receber comandos por voz ou pelo celular.</p></article>
+        <article class="card"><div class="step">Climatização</div><h3>Ar-condicionado LG</h3><span class="tag">Monitoramento e controle</span><p>Em modelos compatíveis, o aplicativo permite ajustar temperatura, modo de ventilação, horário de funcionamento, consumo e verificar o estado físico do dispositivo pelo aplicativo LG ThinQ.</p></article>
+        <article class="card"><div class="step">Eletrodomésticos</div><h3>Máquina de lavar LG</h3><span class="tag">Acompanhamento</span><p>Dependendo do modelo, é possível acompanhar o ciclo, receber notificações e acessar funções conectadas pelo aplicativo LG ThinQ.</p></article>
+        <article class="card"><div class="step">Segurança</div><h3>Câmera com conexão Wi-Fi</h3><span class="tag">Monitoramento remoto</span><p>Uma câmera conectada pelo app Yoosee pode transmitir imagens ao celular e, conforme o modelo, oferecer alertas de movimento ou comunicação por áudio.</p></article>
+        <article class="card"><div class="step">Energia</div><h3>Monitoramento de placa solar</h3><span class="tag">Dados de geração</span><p>Por meio do app SOLARMAN, é possível monitorar a energia coletada pela placa e o valor economizado com seu uso.</p></article>
+      </div>
+      
+      <div class="note" style="margin-top: 1.5rem;"><strong>O que esses exemplos têm em comum?</strong> Eles conectam equipamentos físicos a aplicativos ou plataformas digitais para trocar dados, exibir informações ou receber comandos.</div>
+
+      <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Mais áreas de aplicação da IoT</h3>
+      <div class="modulos-grid">
+        <article class="card">
+          <div class="step">Setor automotivo</div>
+          <h3>Carros conectados</h3>
+          <span class="tag">Telemática e controle</span>
+          <p>Aplicativos das montadoras permitem verificar o nível de combustível ou bateria, pressão dos pneus, avisos de revisão, localização via GPS em tempo real e até ligar o motor ou o ar-condicionado à distância.</p>
+        </article>
+
+        <article class="card">
+          <div class="step">Saúde e medicina</div>
+          <h3>Monitoramento de saúde</h3>
+          <span class="tag">Cuidados contínuos</span>
+          <p>Sensores contínuos de glicose para diabéticos e smartwatches enviam dados vitais em tempo real para médicos e familiares, além de leitos hospitalares conectados para alertas rápidos à equipe médica.</p>
+        </article>
+
+        <article class="card">
+          <div class="step">Agronegócio</div>
+          <h3>Agricultura de precisão</h3>
+          <span class="tag">Sustentabilidade e gestão</span>
+          <p>Sensores na lavoura analisam umidade e nutrientes do solo para acionar a irrigação só quando necessário, enquanto brincos e coleiras inteligentes monitoram a saúde e localização do rebanho.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="arduino-esp32">
+      <h2 class="section-title">4. Diferença entre Arduino e ESP32</h2>
+      <div class="modulos-grid">
+        <article class="card">
+          <div class="step">Placa de desenvolvimento</div>
+          <h3>Arduino Uno</h3>
+          <p>É uma placa de desenvolvimento muito utilizada para aprender programação, eletrônica e controle de componentes. O Arduino Uno R3 tradicional não possui Wi-Fi ou Bluetooth integrados, mas pode receber módulos adicionais para se comunicar com outros dispositivos.</p>
+        </article>
+        <article class="card">
+          <div class="step">Microcontrolador conectado</div>
+          <h3>ESP32</h3>
+          <p>É uma família de microcontroladores que oferece processamento e conectividade sem fio. Muitos modelos possuem Wi-Fi e Bluetooth integrados, facilitando o desenvolvimento de projetos conectados à internet.</p>
+        </article>
+      </div>
+      <table>
+        <thead><tr><th>Característica</th><th>Arduino Uno R3</th><th>ESP32 DevKit comum</th></tr></thead>
+        <tbody>
+          <tr><td>Wi-Fi integrado</td><td>Não</td><td>Geralmente sim</td></tr>
+          <tr><td>Bluetooth integrado</td><td>Não</td><td>Varia por modelo</td></tr>
+          <tr><td>Facilidade para iniciantes</td><td>Ótima</td><td>Boa, com mais recursos para configurar</td></tr>
+          <tr><td>Aplicações comuns</td><td>Eletrônica e automação</td><td>IoT, eletrônica e automação conectada</td></tr>
+        </tbody>
+      </table>
+      <div class="note"><strong>Importante:</strong> Arduino é também um ecossistema de placas e ferramentas de programação, não apenas um modelo de placa. Existem placas Arduino com conectividade sem fio, assim como existem diferentes modelos de ESP32.</div>
+      <h3 style="margin-top: 1.5rem;">Exemplo prático: medir a temperatura</h3>
+      <div class="modulos-grid" style="margin-top: 1rem;">
+        <article class="card">
+          <h3>Com Arduino Uno</h3>
+          <p>Você pode ler a temperatura de um sensor e mostrá-la em um display. Para enviar os dados pela internet, precisaria de um módulo adicional.</p>
+        </article>
+        <article class="card">
+          <h3>Com ESP32</h3>
+          <p>Você pode ler a temperatura e enviar os dados por Wi-Fi para um aplicativo ou plataforma online, usando os recursos de conectividade da placa.</p>
+        </article>
+      </div>
+      <p style="margin-top: 1rem;">Os dois podem realizar automação e participar de projetos de IoT. A diferença é que o ESP32 costuma simplificar a criação de projetos que precisam de conexão sem fio.</p>
+    </section>
+
+    <section class="content-section" id="diferencas">
+      <h2 class="section-title">5. Diferença entre IoT e automação</h2>
+      <div class="modulos-grid">
+        <article class="card">
+          <div class="step">Execução automática</div>
+          <h3>Automação</h3>
+          <p>Automação é quando um sistema executa uma tarefa automaticamente a partir de uma regra, condição ou comando programado.</p>
+          <p><strong>Exemplo:</strong> um sensor detecta movimento e acende uma lâmpada, sem que alguém precise apertar um interruptor.</p>
+        </article>
+        <article class="card">
+          <div class="step">Conectividade e dados</div>
+          <h3>Internet das Coisas (IoT)</h3>
+          <p>IoT envolve objetos físicos conectados a redes para coletar, enviar ou receber dados.</p>
+          <p><strong>Exemplo:</strong> uma lâmpada conectada recebe comandos pelo celular e permite consultar ou mudar seu estado remotamente.</p>
+        </article>
+      </div>
+      <p style="margin-top: 1.25rem;">A diferença central é que <strong>automação trata da execução automática de tarefas, enquanto IoT trata da conectividade e da troca de dados entre dispositivos e sistemas</strong>.</p>
+      <table>
+        <thead><tr><th>Situação</th><th>Classificação</th></tr></thead>
+        <tbody>
+          <tr><td>Sensor acende uma lâmpada sem internet.</td><td>Automação</td></tr>
+          <tr><td>Lâmpada conectada recebe comandos pelo celular.</td><td>IoT</td></tr>
+          <tr><td>Sensor detecta movimento, envia um alerta pela internet e acende a lâmpada automaticamente.</td><td>IoT + automação</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem;">Os conceitos podem funcionar juntos, mas nenhum exige necessariamente o outro.</p>
+    </section>
+
+    <section class="content-section" id="domotica">
+      <h2 class="section-title">6. O que é Domótica?</h2>
+      <p>O termo <strong>Domótica</strong> nasce da junção da palavra latina <em>domus</em> (casa) com <em>robótica</em> ou <em>informática</em>. Trata-se da tecnologia voltada para a <strong>automação e gestão integrada de residências</strong>, permitindo controlar de forma centralizada ou automática diversos sistemas de um determinado local.</p>
+
+      <p>Embora a automação residencial já existisse antes da internet (usando circuitos elétricos fechados e temporizadores), a <strong>Internet das Coisas (IoT)</strong> revolucionou a domótica. Hoje em dia, dispositivos como lâmpadas, motores de cortinas, fechaduras e eletrodomésticos conectam-se à rede Wi-Fi e a centrais inteligentes (como Google Home ou Alexa), tornando a automação muito mais flexível e acessível.</p>
+
+      <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Principais pilares da Domótica</h3>
+      <div class="modulos-grid">
+        <article class="card">
+          <div class="step">Conforto e Praticidade</div>
+          <h3>Conforto</h3>
+          <p>Criação de rotinas personalizadas, acionamento de iluminação por voz e climatização automática do ambiente antes de chegar em casa.</p>
+        </article>
+        <article class="card">
+          <div class="step">Gestão Inteligente</div>
+          <h3>Eficiência Energética</h3>
+          <p>Desligamento automático de luzes em cômodos vazios e otimização do uso do ar-condicionado para reduzir o consumo elétrico.</p>
+        </article>
+        <article class="card">
+          <div class="step">Proteção Residencial</div>
+          <h3>Segurança</h3>
+          <p>Monitoramento remoto por câmeras, sensores de vazamento de água/gás e envio imediato de alertas para o celular em caso de invasão.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="estudo-caso">
+      <h2 class="section-title">7. Estudo de caso: Domótica na prática</h2>
+      <div class="case-box">
+        <p>Uma pessoa adquire uma série de dispositivos IoT — incluindo lâmpadas inteligentes, uma caixa de som integrada, uma cafeteira moderna e um ar-condicionado com Wi-Fi — e cria uma rotina automatizada. Assim, em todos os dias úteis, ao chegar em casa às 19h30, a luz principal da sala se apaga, o abajur se acende em um tom amarelado, a cafeteira prepara seu café favorito, o ar-condicionado ajusta a temperatura ideal e a caixa de som toca uma música relaxante em baixo volume sincronizada ao seu celular.</p>
+        <div class="flow" aria-label="Fluxo simplificado da integração">
+          <div class="flow-item"><span class="symbol"><strong>Dispositivos IoT</strong></span><span>Lâmpadas, ar-condicionado, cafeteira e caixa de som</span></div>
+          <div class="flow-item"><span class="symbol"><strong>Nuvem e Apps</strong></span><span>Plataformas dos fabricantes integradas</span></div>
+          <div class="flow-item"><span class="symbol"><strong>Central Inteligente</strong></span><span>Executa a rotina das 19h30 automaticamente</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="beneficios">
+      <h2 class="section-title">8. Benefícios e desafios da IoT</h2>
+      <div class="modulos-grid">
+        <article class="card"><h3>Benefícios</h3><ul style="margin-left: 1.2rem;"><li>Monitoramento remoto;</li><li>Mais praticidade no controle de equipamentos;</li><li>Acompanhamento de consumo e geração de energia;</li><li>Notificações sobre o estado de dispositivos;</li><li>Dados que ajudam a tomar decisões.</li></ul></article>
+        <article class="card"><h3>Desafios</h3><ul style="margin-left: 1.2rem;"><li>Segurança digital e privacidade;</li><li>Dependência de conexão e serviços online;</li><li>Compatibilidade entre marcas e plataformas;</li><li>Custos de aquisição e manutenção;</li><li>Atualizações e suporte ao longo do tempo.</li></ul></article>
+      </div>
+      <p><strong>E se a internet cair ou a plataforma for desativada?</strong> Alguns controles locais podem continuar funcionando, mas recursos que dependem da nuvem, integrações e monitoramento remoto podem ficar indisponíveis. Isso varia conforme o dispositivo e a configuração.</p>
+    </section>
+
+    <section class="content-section" id="atividade">
+      <h2 class="section-title">9. Teste seus conhecimentos</h2>
+      <p>Responda às questões abaixo para avaliar o seu aprendizado sobre os conceitos de IoT, automação e conectividade.</p>
+
+      <form class="quiz" id="quiz-form">
+        <div class="question" id="q1-group">
+          <p>1. O que é Internet das Coisas (IoT)?</p>
+          <label><input type="radio" name="q1" value="a" required> A) A substituição do cabo de rede por conexões via satélite de alta velocidade em computadores pessoais.</label>
+          <label><input type="radio" name="q1" value="b"> B) O conjunto de programas de computador voltados exclusivamente para gerenciamento de arquivos em nuvem.</label>
+          <label><input type="radio" name="q1" value="c"> C) A tecnologia que permite conectar objetos físicos à internet para coletar, transmitir e processar dados.</label>
+          <label><input type="radio" name="q1" value="d"> D) A criação de robôs autônomos para indústrias pesadas que dispensam qualquer tipo de sinal sem fio.</label>
+          <div class="feedback" id="f-q1" hidden></div>
+        </div>
+
+        <div class="question" id="q2-group">
+          <p>2. Qual é a principal diferença entre Automação e Internet das Coisas (IoT)?</p>
+          <label><input type="radio" name="q2" value="a" required> A) A automação lida com a execução automática de tarefas a partir de regras pré-definidas, enquanto a IoT foca na conectividade e na troca de dados entre dispositivos e sistemas.</label>
+          <label><input type="radio" name="q2" value="b"> B) A automação só funciona se houver sinal de Wi-Fi ativo, enquanto a IoT é uma tecnologia exclusivamente offline.</label>
+          <label><input type="radio" name="q2" value="c"> C) Automação e IoT são termos exatamente sinônimos e cobrem rigorosamente as mesmas funções técnicas.</label>
+          <label><input type="radio" name="q2" value="d"> D) A IoT é aplicada exclusivamente em eletrodomésticos grandes, enquanto a automação só é utilizada em computadores pessoais.</label>
+          <div class="feedback" id="f-q2" hidden></div>
+        </div>
+
+        <div class="question" id="q3-group">
+          <p>3. Qual das situações abaixo representa uma aplicação real da Internet das Coisas (IoT) no cotidiano?</p>
+          <label><input type="radio" name="q3" value="a" required> A) Um sensor local de presença que acende uma lâmpada ao detectar movimento no corredor, sem enviar ou receber dados de nenhuma rede.</label>
+          <label><input type="radio" name="q3" value="b"> B) Um ar-condicionado convencional controlado exclusivamente por um controle remoto infravermelho sem conexão à internet.</label>
+          <label><input type="radio" name="q3" value="c"> C) Uma chave geral de energia que desliga a eletricidade de toda a casa ao ser acionada manualmente no disjuntor.</label>
+          <label><input type="radio" name="q3" value="d"> D) Um aplicativo como o SOLARMAN que recebe dados do inversor solar pela rede para permitir o acompanhamento da geração de energia em tempo real pelo celular.</label>
+          <div class="feedback" id="f-q3" hidden></div>
+        </div>
+
+        <div class="question" id="q4-group">
+          <p>4. O que é Domótica?</p>
+          <label><input type="radio" name="q4" value="a" required> A) Um protocolo de comunicação usado exclusivamente na montagem de placas de circuito impresso como o ESP32.</label>
+          <label><input type="radio" name="q4" value="b"> B) O uso de tecnologias de automação e integração em ambientes residenciais para controlar iluminação, climatização e eletrodomésticos de forma centralizada ou inteligente.</label>
+          <label><input type="radio" name="q4" value="c"> C) A criação de redes de fibra óptica de alta velocidade para conectar grandes indústrias e data centers.</label>
+          <label><input type="radio" name="q4" value="d"> D) O sistema de segurança mecânica que substitui todas as fechaduras digitais por chaves físicas tradicionais.</label>
+          <div class="feedback" id="f-q4" hidden></div>
+        </div>
+
+        <div class="question" id="q5-group">
+          <p>5. Qual é a principal diferença prática entre a placa Arduino Uno R3 tradicional e o microcontrolador ESP32 em projetos de IoT?</p>
+          <label><input type="radio" name="q5" value="a" required> A) O Arduino Uno R3 só consegue ler dados de sensores, enquanto o ESP32 é feito exclusivamente para controlar displays e telas.</label>
+          <label><input type="radio" name="q5" value="b"> B) O ESP32 é uma placa que funciona sem necessidade de energia elétrica ou baterias.</label>
+          <label><input type="radio" name="q5" value="c"> C) O ESP32 já possui conectividade sem fio (Wi-Fi e Bluetooth) integrada na própria placa, enquanto o Arduino Uno R3 necessita de módulos adicionais para se conectar à internet.</label>
+          <label><input type="radio" name="q5" value="d"> D) O Arduino Uno R3 é incompatível com qualquer tipo de linguagem de programação ou automação.</label>
+          <div class="feedback" id="f-q5" hidden></div>
+        </div>
+
+        <button type="submit">Conferir respostas</button>
+        <p id="quiz-result" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="content-section" id="referencias">
+      <h2 class="section-title">10. Referências</h2>
+      <ul class="references">
+        <li><a href="https://home.google.com/" target="_blank" rel="noopener">Google Home — informações sobre casa conectada</a></li>
+        <li><a href="https://forbes.com.br/noticias-sobre/iot/" target="_blank" rel="noopener">Forbes — Tudo Sobre IoT</a></li>
+        <li><a href="https://www.ibm.com/br-pt/think/topics/internet-of-things" target="_blank" rel="noopener">IBM — Internet of Things</a></li>
+        <li><a href="https://www.cin.ufpe.br/~if782/aulas/Aula12IHOME.pdf" target="_blank" rel="noopener">UFPE — Domótica, Casas Digitais, Casas Inteligentes e Gerenciamento através de Dispositivos Móveis</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+  <div class="footer-container">
+    <div>
+      <h3>Sobre este REA</h3>
+      <p>Material educativo introdutório sobre Internet das Coisas no cotidiano, com exemplos de dispositivos conectados, integração de plataformas e desafios práticos.</p>
+      
+      <div style="margin-top: 0.75rem;">
+        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; display: block;">Autoria</span>
+        <span style="font-size: 1.1rem; font-weight: 800; color: #ffffff; display: block; line-height: 1.2;">Gustavo Bogos dos Santos</span>
+        
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 4px;">
+          <img src="uepg-logo.png" 
+               alt="Logo UEPG" 
+               style="height: 22px; width: auto; object-fit: contain;">
+          <span style="font-size: 0.9rem; font-weight: 700; color: var(--primary);">Engenharia de Computação</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Licença e reutilização</h3>
+      <p>Código e conteúdo distribuídos sob a licença <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GNU General Public License v3.0 (GPLv3)</a>. Recursos e marcas registradas de terceiros pertencem aos seus respectivos proprietários.</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('iot-aberta-theme');
+    const HOLD_TIME = 1000;
+    let holdTimer = null;
+
+    if (savedTheme === 'light') {
+      document.body.classList.remove('dark-theme');
+    } else {
+      document.body.classList.add('dark-theme');
+    }
+
+    function updateThemeButton() {
+      const isDark = document.body.classList.contains('dark-theme');
+      themeToggle.textContent = isDark ? 'Segure para modo claro' : 'Segure para modo escuro';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+    }
+    updateThemeButton();
+
+    function switchTheme() {
+      document.body.classList.toggle('dark-theme');
+      localStorage.setItem('iot-aberta-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+      updateThemeButton();
+    }
+
+    function startHold(e) {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      themeToggle.classList.add('holding');
+      holdTimer = setTimeout(() => {
+        switchTheme();
+        stopHold();
+      }, HOLD_TIME);
+    }
+
+    function stopHold() {
+      clearTimeout(holdTimer);
+      themeToggle.classList.remove('holding');
+    }
+
+    themeToggle.addEventListener('mousedown', startHold);
+    themeToggle.addEventListener('mouseup', stopHold);
+    themeToggle.addEventListener('mouseleave', stopHold);
+
+    themeToggle.addEventListener('touchstart', startHold, { passive: true });
+    themeToggle.addEventListener('touchend', stopHold);
+    themeToggle.addEventListener('touchcancel', stopHold);
+
+    themeToggle.addEventListener('keydown', (e) => {
+      if ((e.key === ' ' || e.key === 'Enter') && !e.repeat && !themeToggle.classList.contains('holding')) {
+        startHold(e);
+      }
+    });
+    themeToggle.addEventListener('keyup', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        stopHold();
+      }
+    });
+
+    themeToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+
+    document.getElementById('quiz-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const quizData = {
+        q1: {
+          correct: 'c',
+          explain: 'A IoT consiste na conexão de objetos físicos a redes digitais para coleta, transmissão e processamento de dados.'
+        },
+        q2: {
+          correct: 'a',
+          explain: 'Automação trata de tarefas automáticas regradas, enquanto a IoT foca na conectividade e na troca de dados.'
+        },
+        q3: {
+          correct: 'd',
+          explain: 'O uso de aplicativos como SOLARMAN para acompanhar geração de energia conecta um equipamento físico a uma plataforma digital.'
+        },
+        q4: {
+          correct: 'b',
+          explain: 'Domótica é a automação residencial aplicada ao controle de iluminação, clima, segurança e aparelhos de forma inteligente.'
+        },
+        q5: {
+          correct: 'c',
+          explain: 'O ESP32 traz Wi-Fi e Bluetooth nativos no chip, enquanto o Arduino Uno R3 exige módulos adicionais para ter conectividade.'
+        }
+      };
+
+      const formData = new FormData(this);
+      let score = 0;
+      const total = Object.keys(quizData).length;
+
+      for (const [qKey, qData] of Object.entries(quizData)) {
+        const userAnswer = formData.get(qKey);
+        const feedbackEl = document.getElementById(`f-${qKey}`);
+
+        feedbackEl.hidden = false;
+        if (userAnswer === qData.correct) {
+          score++;
+          feedbackEl.className = 'feedback correct';
+          feedbackEl.innerHTML = `<strong>Correto!</strong> ${qData.explain}`;
+        } else {
+          feedbackEl.className = 'feedback incorrect';
+          feedbackEl.innerHTML = `<strong>Incorreto.</strong> ${qData.explain}`;
+        }
+      }
+
+      const result = document.getElementById('quiz-result');
+      result.textContent = `Você acertou ${score} de ${total} questões (${Math.round((score / total) * 100)}%). ` +
+        (score === total ? 'Excelente! Você dominou todos os conceitos apresentados!' :
+         score >= 3 ? 'Muito bom! Você compreendeu a maior parte do conteúdo.' :
+         'Releia as seções do material e tente novamente.');
+    });
+  </script>
+</body>
+</html>
