@@ -11,6 +11,7 @@ Exercises, assignments, and projects completed during my 2nd year of Computer En
 | Folder | Subject | Language | Content |
 | --- | --- | --- | --- |
 | [`algoritmos/`](algoritmos/) | Algorithms | C | Exercise lists, file handling, and assessments |
+| [`rea-iot/`](rea-iot/) | Open Educational Resource | HTML and CSS | Open Educational Resource about the Internet of Things (IoT) |
 | [`estrutura-de-dados-1/`](estrutura-de-dados-1/) | Data Structures I | — | Coming soon |
 | [`poo-java/`](poo-java/) | Object-Oriented Programming | Java | Classes, exercises, and projects |
 | [`oac-1/`](oac-1/) | Computer Organization and Architecture I | Assembly | Exercises and projects |
@@ -21,6 +22,7 @@ Exercises, assignments, and projects completed during my 2nd year of Computer En
 ## 🔎 Highlights
 
 - **Algorithms (C)** — exercises covering operators, conditionals, loops, arrays, matrices, structs, and file handling.
+- **IoT OER (HTML and CSS)** — website about the Internet of Things (IoT), published on [Vercel](https://iot-rea-gustavo.vercel.app).
 - **OOP (Java)** — exercises and projects involving inheritance, polymorphism, exceptions, and simple systems.
 - **COA I (Assembly)** — low-level programs using registers and Assembly instructions.
 - **COA II (VHDL)** — development of parts of a MIPS processor, such as the ALU, control units, register file, and multiplexers.
