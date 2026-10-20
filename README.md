@@ -11,7 +11,7 @@ Exercícios, listas e trabalhos feitos durante o 2º ano de Engenharia de Comput
 | Pasta | Disciplina | Linguagem | Conteúdo |
 | --- | --- | --- | --- |
 | [`algoritmos/`](algoritmos/) | Algoritmos | C | Listas de exercícios, arquivos e avaliações |
-| [`rea-iot/`](rea-iot/) | Recurso Educacional Aberto | Website em HTML e CSS | REA sobre Internet das Coisas (IOT) |
+| [`rea-iot/`](rea-iot/) | Recurso Educacional Aberto | HTML e CSS | REA sobre Internet das Coisas (IOT) |
 | [`estrutura-de-dados-1/`](estrutura-de-dados-1/) | Estrutura de Dados I | — | Em breve |
 | [`poo-java/`](poo-java/) | Programação Orientada a Objetos | Java | Aulas, exercícios e trabalhos |
 | [`oac-1/`](oac-1/) | Organização e Arquitetura de Computadores I | Assembly | Exercícios e trabalhos |
@@ -22,7 +22,7 @@ Exercícios, listas e trabalhos feitos durante o 2º ano de Engenharia de Comput
 ## 🔎 Destaques
 
 - **Algoritmos (C)** — exercícios envolvendo operadores, condicionais, laços, vetores, matrizes, registros e arquivos.
-- **REA IOT (HTML e CSS)** — website publicado em (https://iot-rea-gustavo.vercel.app).
+- **REA IOT (HTML e CSS)** — website publicado em [Vercel](https://iot-rea-gustavo.vercel.app).
 - **POO (Java)** — exercícios e trabalhos envolvendo herança, polimorfismo, exceções e sistemas simples.
 - **OAC I (Assembly)** — programas em Assembly utilizando registradores e instruções de baixo nível.
 - **OAC II (VHDL)** — desenvolvimento de partes de um processador MIPS, como ULA, controle, banco de registradores e multiplexadores.
